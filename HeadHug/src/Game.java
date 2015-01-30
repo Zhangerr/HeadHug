@@ -7,21 +7,22 @@ import java.awt.*;
 public class Game  {
     public static final double SCALE_MAX = 100;
     public static final double SCALE_MIN = 0;
+    public static final double dT = .1;
     static Character c;
     static Background b;
     public static void main(String[] args) {
-        b = new Background(100,-10, 40,"");
-        c = new Character(10, 60, 2, 0);
+        StdDraw.setCanvasSize(350,450);
+        b = new Background(48,-10, 40,"images/ground.png");
+        c = new Character(10, 60, 6, 0);
         if (args.length >= 2) {
             StdDraw.setScale(Double.parseDouble(args[0]),Double.parseDouble(args[1]));
         } else {
             StdDraw.setScale(SCALE_MIN, SCALE_MAX);
         }
-        for(double i = 0; i < 10000000; i+=1) {
-            StdDraw.clear();
-            b.update(.1);
-            c.update(.1);
-
+        while (true) {
+            StdDraw.picture(50,50,"images/background.png",100,100);
+            b.update(dT);
+            c.update(dT);
             b.draw();
             c.draw();
             StdDraw.show(10);
