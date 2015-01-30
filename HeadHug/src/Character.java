@@ -18,7 +18,7 @@ public class Character {
     }
     public void draw() {
         StdDraw.setPenColor(Color.green);
-        StdDraw.picture(x,y,"images/bird_sing.png", angle);
+        StdDraw.picture(x,y,"../images/bird_sing.png", angle);
         if(dead) {
             StdDraw.text(50, 50, "you're dead :(");
         }
