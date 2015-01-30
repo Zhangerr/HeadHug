@@ -6,7 +6,7 @@ public class Pipe {
     private double width;
     private final double MAXSIZE = 80;
     private String file;
-    public Pipe(double position, double velociy, double width, String file) {
+    public Pipe(double position, double velocity, double width, String file) {
         this.file = file;
         this.velocity = velocity;
         this.position = position;
@@ -14,7 +14,6 @@ public class Pipe {
     }
     public void update(Double dt) {
         position -= dt * velocity;
-        System.out.println(velocity);
     }
     public void stop() {
         velocity = 0;
