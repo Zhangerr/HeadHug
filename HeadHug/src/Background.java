@@ -1,7 +1,6 @@
 /**
  * Created by azhang on 1/29/15.
  */
-import java.awt.*;
 public class Background {
     private double velocity;
     private double position;
@@ -36,14 +35,8 @@ public class Background {
         velocity = initvel;
     }
     public void draw() {
-     //   StdDraw.setPenColor(Color.red);
-       // StdDraw.filledRectangle(50, 0, 50, 20);
-        StdDraw.setPenColor(Color.black);
         //336 x 112
         StdDraw.picture(position, 10, file, 101, 25);
-
         StdDraw.picture(position2, 10, file, 101, 25);
-       // StdDraw.filledRectangle(position, 30, 25, 5);
-
     }
 }

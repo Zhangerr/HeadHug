@@ -11,7 +11,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.net.HttpURLConnection;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -38,7 +37,7 @@ import java.util.regex.Pattern;
  *  the following end-of-line delimeter, while reading a character consumes
  *  nothing extra. 
  *  <p>
- *  Whitespace is defined in {@link Character#isWhitespace(char)}. Newlines
+ *  Whitespace is defined in {@link MCharacter#isWhitespace(char)}. Newlines
  *  consist of \n, \r, \r\n, and Unicode hex code points 0x2028, 0x2029, 0x0085;
  *  see <tt><a href="http://www.docjar.com/html/api/java/util/Scanner.java.html">
  *  Scanner.java</a></tt> (NB: Java 6u23 and earlier uses only \r, \r, \r\n).

@@ -136,7 +136,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
     // set of key codes currently pressed down
     private static TreeSet<Integer> keysDown = new TreeSet<Integer>();
-  
+
 
     // singleton pattern: client can't instantiate
     private StdDraw() { }
@@ -187,7 +187,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
         // add antialiasing
         RenderingHints hints = new RenderingHints(RenderingHints.KEY_ANTIALIASING,
-                                                  RenderingHints.VALUE_ANTIALIAS_ON);
+                RenderingHints.VALUE_ANTIALIAS_ON);
         hints.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         offscreen.addRenderingHints(hints);
 
@@ -218,15 +218,15 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         JMenuItem menuItem1 = new JMenuItem(" Save...   ");
         menuItem1.addActionListener(std);
         menuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
-                                Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+                Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
         menu.add(menuItem1);
         return menuBar;
     }
 
 
-   /*************************************************************************
-    *  User and screen coordinate systems
-    *************************************************************************/
+    /*************************************************************************
+     *  User and screen coordinate systems
+     *************************************************************************/
 
     /**
      * Set the x-scale to be the default (between 0.0 and 1.0).
@@ -378,9 +378,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     public static void setFont(Font f) { font = f; }
 
 
-   /*************************************************************************
-    *  Drawing geometric shapes.
-    *************************************************************************/
+    /*************************************************************************
+     *  Drawing geometric shapes.
+     *************************************************************************/
 
     /**
      * Draw a line from (x0, y0) to (x1, y1).
@@ -419,7 +419,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         // if (ws <= 1 && hs <= 1) pixel(x, y);
         if (scaledPenRadius <= 1) pixel(x, y);
         else offscreen.fill(new Ellipse2D.Double(xs - scaledPenRadius/2, ys - scaledPenRadius/2,
-                                                 scaledPenRadius, scaledPenRadius));
+                scaledPenRadius, scaledPenRadius));
         draw();
     }
 
@@ -635,9 +635,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
 
 
-   /*************************************************************************
-    *  Drawing images.
-    *************************************************************************/
+    /*************************************************************************
+     *  Drawing images.
+     *************************************************************************/
 
     // get an image from the given filename
     private static Image getImage(String filename) {
@@ -728,9 +728,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         if (ws <= 1 && hs <= 1) pixel(x, y);
         else {
             offscreen.drawImage(image, (int) Math.round(xs - ws/2.0),
-                                       (int) Math.round(ys - hs/2.0),
-                                       (int) Math.round(ws),
-                                       (int) Math.round(hs), null);
+                    (int) Math.round(ys - hs/2.0),
+                    (int) Math.round(ws),
+                    (int) Math.round(hs), null);
         }
         draw();
     }
@@ -758,18 +758,18 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
         offscreen.rotate(Math.toRadians(-degrees), xs, ys);
         offscreen.drawImage(image, (int) Math.round(xs - ws/2.0),
-                                   (int) Math.round(ys - hs/2.0),
-                                   (int) Math.round(ws),
-                                   (int) Math.round(hs), null);
+                (int) Math.round(ys - hs/2.0),
+                (int) Math.round(ws),
+                (int) Math.round(hs), null);
         offscreen.rotate(Math.toRadians(+degrees), xs, ys);
 
         draw();
     }
 
 
-   /*************************************************************************
-    *  Drawing text.
-    *************************************************************************/
+    /*************************************************************************
+     *  Drawing text.
+     *************************************************************************/
 
     /**
      * Write the given text string in the current font, centered on (x, y).
@@ -879,9 +879,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
 
-   /*************************************************************************
-    *  Save drawing to a file.
-    *************************************************************************/
+    /*************************************************************************
+     *  Save drawing to a file.
+     *************************************************************************/
 
     /**
      * Save onscreen image to file - suffix must be png, jpg, or gif.
@@ -905,9 +905,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
             newRaster = raster.createWritableChild(0, 0, width, height, 0, 0, new int[] {0, 1, 2});
             DirectColorModel cm = (DirectColorModel) onscreenImage.getColorModel();
             DirectColorModel newCM = new DirectColorModel(cm.getPixelSize(),
-                                                          cm.getRedMask(),
-                                                          cm.getGreenMask(),
-                                                          cm.getBlueMask());
+                    cm.getRedMask(),
+                    cm.getGreenMask(),
+                    cm.getBlueMask());
             BufferedImage rgbBuffer = new BufferedImage(newCM, newRaster, false,  null);
             try { ImageIO.write(rgbBuffer, suffix, file); }
             catch (IOException e) { e.printStackTrace(); }
@@ -932,9 +932,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
 
-   /*************************************************************************
-    *  Mouse interactions.
-    *************************************************************************/
+    /*************************************************************************
+     *  Mouse interactions.
+     *************************************************************************/
 
     /**
      * Is the mouse being pressed?
@@ -1023,9 +1023,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
 
-   /*************************************************************************
-    *  Keyboard interactions.
-    *************************************************************************/
+    /*************************************************************************
+     *  Keyboard interactions.
+     *************************************************************************/
 
     /**
      * Has the user typed a key?

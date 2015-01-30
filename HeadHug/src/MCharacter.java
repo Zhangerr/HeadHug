@@ -4,13 +4,13 @@ import java.awt.*;
  * Created by azhang on 1/30/15.
  * TODO: get rid of magic numbers
  */
-public class Character {
-    private double yAccel = .82 * 5;
+public class MCharacter {
+    private double yAccel = .82 * 7;
     private double xVelocity, yVelocity,x,y,angle;
     private boolean dead = false;
     private double deathVelocity = -2;
     private boolean previousState = false;
-    public Character(double xpos, double ypos, double xVel, double yVel) {
+    public MCharacter(double xpos, double ypos, double xVel, double yVel) {
         xVelocity = xVel;
         yVelocity = yVel;
         x = xpos;
@@ -32,6 +32,7 @@ public class Character {
         yVelocity = 0;
         Game.start();
     }
+
     private void checkBoundaries(double dt) {
         if (y > Game.SCALE_MAX) {
             die();
@@ -55,9 +56,7 @@ public class Character {
         }
         if(StdDraw.mousePressed() && !previousState ) {
             if(!dead) {
-             //   if (yVelocity < 0) {
-                    yVelocity = 0;
-               // }
+                yVelocity = 0;
                 yVelocity += 150 * dt;
             } else {
                 restart();
