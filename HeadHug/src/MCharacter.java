@@ -10,15 +10,17 @@ public class MCharacter {
     public boolean dead = false;
     private double deathVelocity = -2;
     private boolean previousState = false;
-    public MCharacter(double xpos, double ypos, double xVel, double yVel) {
+    private String image;
+    public MCharacter(double xpos, double ypos, double xVel, double yVel, String img) {
         xVelocity = xVel;
         yVelocity = yVel;
         x = xpos;
         y = ypos;
+        image = img;
     }
     public void draw() {
         StdDraw.setPenColor(Color.green);
-        StdDraw.picture(x,y,"../images/bird_sing.png", angle);
+        StdDraw.picture(x,y,image, angle);
         if(dead) {
             StdDraw.text(50, 50, "you're dead :(");
         }

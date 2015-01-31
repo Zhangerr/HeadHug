@@ -19,7 +19,7 @@ public class Game  {
     public static void main(String[] args) {
         StdDraw.setCanvasSize(350,450);
         b = new Background(48,-velocity, 40,"../images/ground.png");
-        c = new MCharacter(10, 60, 6, 0);
+        c = new MCharacter(10, 60, 6, 0, "../images/bird_sing.png");
 
         
 
@@ -82,7 +82,7 @@ public class Game  {
     }
     public static void start() {
         b.start();
-                int randomInt = randomGenerator.nextInt(30);
+        int randomInt = randomGenerator.nextInt(30);
         for (int i = 0; i<allPipes.length; i+=1){
             randomInt = randomGenerator.nextInt(30);
             allPipes[i] = new Pipe(100+i*45, velocity, topPipeImg, bottomPipeImg, randomInt);
