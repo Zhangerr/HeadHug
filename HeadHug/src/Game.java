@@ -2,6 +2,7 @@
  * Created by azhang on 1/29/15.
  */
 import java.util.Random;
+import java.awt.*;
 public class Game  {
     public static final double SCALE_MAX = 100;
     public static final double SCALE_MIN = 0;
@@ -13,6 +14,7 @@ public class Game  {
     static String topPipeImg = "../images/tube1.png";
     static String bottomPipeImg = "../images/tube2.png";
     static Random randomGenerator = new Random();
+    static int score = 0;
 
     public static void main(String[] args) {
         StdDraw.setCanvasSize(350,450);
@@ -25,7 +27,6 @@ public class Game  {
         for (int i = 0; i<allPipes.length; i+=1){
             randomInt = randomGenerator.nextInt(30);
             allPipes[i] = new Pipe(100+i*45, velocity, topPipeImg, bottomPipeImg, randomInt);
-
         } 
 
 
@@ -48,12 +49,14 @@ public class Game  {
                     allPipes[i].yPosition2=0 + randomInt;
                 }
                 if (Math.round(allPipes[i].xPosition - 7.4) == c.x){
-                    System.out.println("0collision");
+                    
                     if (allPipes[i].yPosition > c.y+50 || allPipes[i].yPosition2<c.y-57){
                         c.die();
                         for (int b = 0; b<allPipes.length; b+=1){
                             allPipes[b].stop();
                         }
+                    } else {
+                        score +=1;
                     }
                 }
                 allPipes[i].update(dT);
@@ -63,6 +66,8 @@ public class Game  {
 
             b.draw();
             c.draw();
+            StdDraw.setPenColor(Color.black);
+            StdDraw.text(50,75, Integer.toString(score));
             StdDraw.show(10);
 
 
@@ -73,12 +78,18 @@ public class Game  {
         for(int i = 0; i<allPipes.length; i+=1) {
             allPipes[i].stop();
         }
+        score = 0;
     }
     public static void start() {
         b.start();
-        for(int i = 0; i<allPipes.length; i+=1) {
-            allPipes[i].start();
-        }
+                int randomInt = randomGenerator.nextInt(30);
+        for (int i = 0; i<allPipes.length; i+=1){
+            randomInt = randomGenerator.nextInt(30);
+            allPipes[i] = new Pipe(100+i*45, velocity, topPipeImg, bottomPipeImg, randomInt);
+        } 
+        // for(int i = 0; i<allPipes.length; i+=1) {
+        //     allPipes[i].start();
+        // }
     }
 
 }
