@@ -47,10 +47,15 @@ public class Game  {
                     allPipes[i].yPosition=95 + randomInt;
                     allPipes[i].yPosition2=0 + randomInt;
                 }
-
-            } 
-
-            for (int i = 0; i<allPipes.length; i+=1){
+                if (Math.round(allPipes[i].xPosition - 7.4) == c.x){
+                    System.out.println("0collision");
+                    if (allPipes[i].yPosition > c.y+50 || allPipes[i].yPosition2<c.y-57){
+                        c.die();
+                        for (int b = 0; b<allPipes.length; b+=1){
+                            allPipes[b].stop();
+                        }
+                    }
+                }
                 allPipes[i].update(dT);
                 allPipes[i].draw();
             } 

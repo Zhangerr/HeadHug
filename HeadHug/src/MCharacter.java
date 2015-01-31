@@ -6,8 +6,8 @@ import java.awt.*;
  */
 public class MCharacter {
     private double yAccel = .82 * 7;
-    private double xVelocity, yVelocity,x,y,angle;
-    private boolean dead = false;
+    public double xVelocity, yVelocity,x,y,angle;
+    public boolean dead = false;
     private double deathVelocity = -2;
     private boolean previousState = false;
     public MCharacter(double xpos, double ypos, double xVel, double yVel) {
@@ -57,7 +57,7 @@ public class MCharacter {
         if(StdDraw.mousePressed() && !previousState ) {
             if(!dead) {
                 yVelocity = 0;
-                yVelocity += 150 * dt;
+                yVelocity += 120 * dt;
             } else {
                 restart();
                 y = Game.SCALE_MAX / 2;
