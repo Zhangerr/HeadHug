@@ -1,25 +1,27 @@
 import java.util.Random;
 import java.awt.*;
 public class Pipe {
-    private double velocity;
-    private double dt;
+    public double velocity;
+    public double dt;
     public double xPosition;
-    public double yPosition;
-    private double width;
-    private Pipe pTop;
-    private Pipe pBot;
+    public double yPosition,origVel;
+    public double yPosition2;
+    public String file;
+    public String file2;
     static Random randomGenerator = new Random();
-    private int randomInt = randomGenerator.nextInt(30);
-    private String file;
-    public Pipe(double xPosition, double yPosition, double velocity, double width, String file) {
+    public int randomInt = randomGenerator.nextInt(30);
+    public Pipe(double xPosition, double velocity, String file, String file2, int random) {
         this.file = file;
+        this.file2 = file2;
         this.velocity = velocity;
         this.xPosition = xPosition;
-        this.yPosition = yPosition;
-        this.width = width;
+        this.yPosition = 95 + random;
+        this.yPosition2 = random;
+        this.origVel = velocity;
+
     }
 
-    public void randomPosition(Pipe[] pipes) {
+/*    public void randomPosition(Pipe[] pipes) {
         if (pTop.xPosition == -5){
             randomInt = randomGenerator.nextInt(30);
             pTop.xPosition=105;
@@ -27,7 +29,7 @@ public class Pipe {
             pTop.yPosition=95 + randomInt;
             pBot.yPosition=0 + randomInt; 
         }
-    }
+    }*/
     public void update(Double dt) {
         xPosition -= dt * velocity;
         if(xPosition < -50) {
@@ -35,11 +37,15 @@ public class Pipe {
         }
 
     }
+    public void start() {
+        velocity = origVel;
+    }
     public void stop() {
         velocity = 0;
     }
     public void draw() {
         StdDraw.picture(xPosition, yPosition, file);
+        StdDraw.picture(xPosition, yPosition2, file2);
 
     }
 
