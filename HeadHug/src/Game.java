@@ -9,7 +9,7 @@ public class Game  {
     static int velocity = 5;
     static MCharacter c;
     static Background b;
-    static Pipe [] allPipes = new Pipe[4];
+    static Pipe [] allPipes = new Pipe[3];
     static String topPipeImg = "../images/tube1.png";
     static String bottomPipeImg = "../images/tube2.png";
     static Random randomGenerator = new Random();
@@ -22,7 +22,7 @@ public class Game  {
         
 
         int randomInt = randomGenerator.nextInt(30);
-        for (int i = 0; i<allPipes.length-1; i+=1){
+        for (int i = 0; i<allPipes.length; i+=1){
             randomInt = randomGenerator.nextInt(30);
             allPipes[i] = new Pipe(100+i*45, velocity, topPipeImg, bottomPipeImg, randomInt);
 
@@ -40,7 +40,7 @@ public class Game  {
             b.update(dT);
             c.update(dT);
 
-            for (int i = 0; i<allPipes.length-1; i+=1){
+            for (int i = 0; i<allPipes.length; i+=1){
                 if (allPipes[i].xPosition == -5){
                     randomInt = randomGenerator.nextInt(30);
                     allPipes[i].xPosition=135;
@@ -50,7 +50,7 @@ public class Game  {
 
             } 
 
-            for (int i = 0; i<allPipes.length-1; i+=1){
+            for (int i = 0; i<allPipes.length; i+=1){
                 allPipes[i].update(dT);
                 allPipes[i].draw();
             } 
@@ -65,12 +65,15 @@ public class Game  {
     }
     public static void gameOver() {
         b.stop();
-        for(Pipe p : allPipes) {
-            p.stop();
+        for(int i = 0; i<allPipes.length; i+=1) {
+            allPipes[i].stop();
         }
     }
     public static void start() {
         b.start();
+        for(int i = 0; i<allPipes.length; i+=1) {
+            allPipes[i].start();
+        }
     }
 
 }
